@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanika Gaikwad Patil | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="src/style.csswa">
+</head>
+<body class="bg-black text-white font-poppins scroll-smooth relative">
+
+  <!-- Wave Backgrounds -->
+  <div class="wave-bg"></div>
+  <div class="wave-bg"></div>
+  <div class="wave-bg"></div>
+
+  <!-- Hamburger -->
+  <div id="hamburger" class="fixed top-5 right-5 w-8 h-6 flex flex-col justify-between cursor-pointer z-50 md:hidden">
+    <span class="h-1 w-full bg-cyan-400 rounded"></span>
+    <span class="h-1 w-full bg-cyan-400 rounded"></span>
+    <span class="h-1 w-full bg-cyan-400 rounded"></span>
+  </div>
+
+  <!-- Mobile Navbar -->
+  <nav id="top-navbar" class="fixed top-0 left-[-100%] w-full h-screen bg-black/95 flex flex-col justify-center items-center gap-10 transition-left duration-500 z-50">
+    <a href="#home" class="text-4xl font-bold uppercase text-cyan-400">Home</a>
+    <a href="#about" class="text-4xl font-bold uppercase text-cyan-400">About</a>
+    <a href="#projects" class="text-4xl font-bold uppercase text-cyan-400">Projects</a>
+    <a href="#achievements" class="text-4xl font-bold uppercase text-cyan-400">Achievements</a>
+    <a href="#contact" class="text-4xl font-bold uppercase text-cyan-400">Contact</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative flex flex-col md:flex-row items-center justify-between min-h-screen px-8 md:px-20 pt-24 md:pt-0 z-10">
+    <div class="hero-content flex-1 max-w-lg z-10 text-center md:text-left space-y-6 px-4 sm:px-0">
+      <h1 id="name" class="text-3xl md:text-4xl font-bold text-cyan-400"></h1>
+      <h2 class="text-cyan-400 text-lg md:text-xl uppercase tracking-wide">Front End | Full Stack | Backend Developer</h2>
+      <p class="text-cyan-200 text-base md:text-lg leading-relaxed">
+        Final year B.Tech CSE student, experienced in MERN, Java, Python, Android development.
+      </p>
+      <a id="download-cv"
+      href="https://drive.google.com/uc?export=download&id=1ETa1y0zzz3K9EpCalvTzxZOKcdeuY0Zz"
+      class="inline-block px-6 py-3 bg-blue-700 hover:bg-cyan-400 text-white font-semibold rounded-lg shadow-lg hover:shadow-cyan-400 transition transform hover:-translate-y-1">
+      📥 Download CV
+   </a>
+   
+
+    </div>
+    <div class="hero-image flex-1 flex justify-center z-10 animate-float mt-10 md:mt-0 px-4 sm:px-0">
+      <img src="assets/sanika.png" alt="Sanika Gaikwad Patil"
+           class="w-[250px] sm:w-[300px] md:w-[450px] h-[300px] sm:h-[350px] md:h-[500px] object-contain border-4 border-cyan-400 rounded-lg shadow-[0_0_40px_#00bfff] hover:scale-105 hover:drop-shadow-[0_0_15px_#00e5ff] transition-all duration-300">
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="min-h-screen flex flex-col justify-center px-8 md:px-20 py-24 space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6">About Me</h2>
+    <p class="text-cyan-200 text-lg leading-relaxed">Passionate about building interactive, scalable digital solutions blending performance & creativity.</p>
+    <p class="text-cyan-200 text-lg leading-relaxed">Strong foundation in CS with hands-on experience in modern technologies. Goal: build applications that make a real difference.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10">
+      <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-6 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center">MERN Stack</div>
+      <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-6 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center">Java</div>
+      <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-6 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center">Python</div>
+      <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-6 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center">Android</div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="min-h-screen flex flex-col justify-center px-8 md:px-20 py-24 space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6">Projects</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-gradient-to-tr from-black/50 to-cyan-900/40 p-6 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform cursor-pointer">
+        <h3 class="text-cyan-400 font-bold text-xl mb-3">EcoCart</h3>
+        <p class="text-cyan-200 mb-4">Sustainable shopping assistant that rates products on eco-friendliness.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-cyan-400/20 border border-cyan-400 text-cyan-400 px-3 py-1 rounded-full text-sm">React</span>
+          <span class="bg-cyan-400/20 border border-cyan-400 text-cyan-400 px-3 py-1 rounded-full text-sm">Node.js</span>
+          <span class="bg-cyan-400/20 border border-cyan-400 text-cyan-400 px-3 py-1 rounded-full text-sm">MongoDB</span>
+        </div>
+      </div>
+      <!-- Add more projects similarly -->
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="min-h-screen flex flex-col justify-center px-8 md:px-20 py-24 space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6">Achievements</h2>
+    <div class="space-y-6">
+      <div class="flex flex-col md:flex-row items-center gap-6 p-6 bg-gradient-to-tr from-black/50 to-cyan-900/40 border border-cyan-400 rounded-lg shadow-lg hover:scale-102 transition transform">
+        <div class="w-16 h-16 flex items-center justify-center border-2 border-cyan-400 rounded-full text-2xl text-cyan-400 bg-cyan-400/10">🏆</div>
+        <div>
+          <h3 class="text-cyan-400 font-semibold text-lg">Top 5 finalist in National Hackathon 2024</h3>
+          <p class="text-cyan-200">Competed among hundreds of teams nationwide</p>
+        </div>
+      </div>
+      <!-- Add more achievements -->
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="min-h-screen flex flex-col justify-center px-8 md:px-20 py-24 space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6">Get In Touch</h2>
+    <div class="flex flex-col md:flex-row gap-6 mt-10">
+      <a href="mailto:aniketgosavi2021@gmail.com" class="flex-1 flex items-center gap-4 p-6 bg-gradient-to-tr from-black/50 to-cyan-900/40 border border-cyan-400 rounded-lg shadow-lg hover:scale-102 transition transform text-white">
+        <div class="w-12 h-12 flex items-center justify-center border-2 border-cyan-400 rounded-full text-xl bg-cyan-400/10">✉️</div>
+        <div>
+          <div class="text-gray-400 text-sm">Email</div>
+          <div class="text-cyan-400 font-semibold">sanikagaikwad189@gmail.com</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Desktop Navbar -->
+  <nav id="navbar" class="fixed bottom-0 left-0 w-full flex justify-around bg-black/95 border-t-2 border-cyan-400 backdrop-blur-md py-5 z-50 hidden md:flex">
+    <a href="#home" class="uppercase font-semibold text-cyan-400 hover:text-white transition">Home</a>
+    <a href="#about" class="uppercase font-semibold text-cyan-400 hover:text-white transition">About</a>
+    <a href="#projects" class="uppercase font-semibold text-cyan-400 hover:text-white transition">Projects</a>
+    <a href="#achievements" class="uppercase font-semibold text-cyan-400 hover:text-white transition">Achievements</a>
+    <a href="#contact" class="uppercase font-semibold text-cyan-400 hover:text-white transition">Contact</a>
+  </nav>
+
+  <script src="src/script.js"></script>
+</body>
+</html>
