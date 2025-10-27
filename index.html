@@ -5,121 +5,850 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sanika Gaikwad Patil | Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="src/style.csswa">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    
+    .wave-bg {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 183, 255, 0.1) 100%);
+      z-index: 0;
+      opacity: 0.5;
+    }
+    
+    .wave-bg:nth-child(2) {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(0, 183, 255, 0.15) 100%);
+      opacity: 0.3;
+    }
+    
+    .wave-bg:nth-child(3) {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(0, 183, 255, 0.1) 100%);
+      opacity: 0.2;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .scroll-smooth {
+      scroll-behavior: smooth;
+    }
+    
+    .section-padding {
+      padding: 100px 0;
+    }
+    
+    .skill-bar {
+      height: 8px;
+      background-color: rgba(0, 183, 255, 0.2);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background-color: #00b7ff;
+      border-radius: 4px;
+      transition: width 1.5s ease-in-out;
+    }
+    
+    .project-card {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card:hover .project-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+    }
+    
+    .achievement-card {
+      transition: all 0.3s ease;
+    }
+    
+    .achievement-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 183, 255, 0.3);
+    }
+    
+    .contact-icon {
+      transition: all 0.3s ease;
+    }
+    
+    .contact-link:hover .contact-icon {
+      transform: scale(1.2);
+      color: #00b7ff;
+    }
+    
+    .typewriter {
+      overflow: hidden;
+      border-right: 2px solid #00b7ff;
+      white-space: nowrap;
+      margin: 0 auto;
+      animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+    
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #00b7ff }
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .particles-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .particle {
+      position: absolute;
+      background-color: rgba(0, 183, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background-color: #00b7ff;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #000;
+      border: 4px solid #00b7ff;
+      border-radius: 50%;
+      top: 15px;
+      z-index: 1;
+    }
+    
+    .left {
+      left: 0;
+    }
+    
+    .right {
+      left: 50%;
+    }
+    
+    .left::after {
+      right: -10px;
+    }
+    
+    .right::after {
+      left: -10px;
+    }
+    
+    .timeline-content {
+      padding: 20px;
+      background: rgba(0, 183, 255, 0.1);
+      border: 1px solid #00b7ff;
+      border-radius: 10px;
+      position: relative;
+    }
+    
+    .floating-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    .shape {
+      position: absolute;
+      opacity: 0.1;
+      border: 1px solid #00b7ff;
+    }
+    
+    .cursor-follower {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: rgba(0, 183, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+    }
+    
+    .glow-text {
+      text-shadow: 0 0 10px #00b7ff, 0 0 20px #00b7ff, 0 0 30px #00b7ff;
+    }
+    
+    .counter {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #00b7ff;
+    }
+    
+    .testimonial-card {
+      background: rgba(0, 183, 255, 0.1);
+      border: 1px solid #00b7ff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 183, 255, 0.3);
+    }
+    
+    .blog-card {
+      background: rgba(0, 183, 255, 0.1);
+      border: 1px solid #00b7ff;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 183, 255, 0.3);
+    }
+  </style>
 </head>
-<body class="bg-black text-white font-poppins scroll-smooth relative">
+<body class="scroll-smooth relative">
 
   <!-- Wave Backgrounds -->
   <div class="wave-bg"></div>
   <div class="wave-bg"></div>
   <div class="wave-bg"></div>
 
+  <!-- Floating Shapes -->
+  <div class="floating-shapes" id="floating-shapes"></div>
+
+  <!-- Particles Container -->
+  <div class="particles-container" id="particles-container"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-follower" id="cursor-follower"></div>
+
   <!-- Hamburger -->
   <div id="hamburger" class="fixed top-5 right-5 w-8 h-6 flex flex-col justify-between cursor-pointer z-50 md:hidden">
-    <span class="h-1 w-full bg-cyan-400 rounded"></span>
-    <span class="h-1 w-full bg-cyan-400 rounded"></span>
-    <span class="h-1 w-full bg-cyan-400 rounded"></span>
+    <span class="h-1 w-full bg-cyan-400 rounded transition-all duration-300"></span>
+    <span class="h-1 w-full bg-cyan-400 rounded transition-all duration-300"></span>
+    <span class="h-1 w-full bg-cyan-400 rounded transition-all duration-300"></span>
   </div>
 
   <!-- Mobile Navbar -->
-  <nav id="top-navbar" class="fixed top-0 left-[-100%] w-full h-screen bg-black/95 flex flex-col justify-center items-center gap-10 transition-left duration-500 z-50">
-    <a href="#home" class="text-4xl font-bold uppercase text-cyan-400">Home</a>
-    <a href="#about" class="text-4xl font-bold uppercase text-cyan-400">About</a>
-    <a href="#projects" class="text-4xl font-bold uppercase text-cyan-400">Projects</a>
-    <a href="#achievements" class="text-4xl font-bold uppercase text-cyan-400">Achievements</a>
-    <a href="#contact" class="text-4xl font-bold uppercase text-cyan-400">Contact</a>
+  <nav id="top-navbar" class="fixed top-0 left-[-100%] w-full h-screen bg-black/95 flex flex-col justify-center items-center gap-10 transition-all duration-500 z-50">
+    <a href="#home" class="text-4xl font-bold uppercase text-cyan-400 hover:text-white transition-all duration-300">Home</a>
+    <a href="#about" class="text-4xl font-bold uppercase text-cyan-400 hover:text-white transition-all duration-300">About</a>
+    <a href="#skills" class="text-4xl font-bold uppercase text-cyan-400 hover:text-white transition-all duration-300">Skills</a>
+    <a href="#projects" class="text-4xl font-bold uppercase text-cyan-400 hover:text-white transition-all duration-300">Projects</a>
+    <a href="#achievements" class="text-4xl font-bold uppercase text-cyan-400 hover:text-white transition-all duration-300">Achievements</a>
+    <a href="#experience" class="text-4xl font-bold uppercase text-cyan-400 hover:text-white transition-all duration-300">Experience</a>
+    <a href="#contact" class="text-4xl font-bold uppercase text-cyan-400 hover:text-white transition-all duration-300">Contact</a>
   </nav>
 
   <!-- Hero Section -->
   <section id="home" class="relative flex flex-col md:flex-row items-center justify-between min-h-screen px-8 md:px-20 pt-24 md:pt-0 z-10">
     <div class="hero-content flex-1 max-w-lg z-10 text-center md:text-left space-y-6 px-4 sm:px-0">
-      <h1 id="name" class="text-3xl md:text-4xl font-bold text-cyan-400"></h1>
-      <h2 class="text-cyan-400 text-lg md:text-xl uppercase tracking-wide">Front End | Full Stack | Backend Developer</h2>
-      <p class="text-cyan-200 text-base md:text-lg leading-relaxed">
-        Final year B.Tech CSE student, experienced in MERN, Java, Python, Android development.
+      <h1 id="name" class="text-4xl md:text-5xl font-bold text-cyan-400 typewriter glow-text">Sanika Gaikwad Patil</h1>
+      <h2 class="text-cyan-400 text-lg md:text-xl uppercase tracking-wide mt-4">Front End | Full Stack | Backend Developer</h2>
+      <p class="text-cyan-200 text-base md:text-lg leading-relaxed mt-4">
+        Final year B.Tech CSE student, experienced in MERN, Java, Python, Android development. Passionate about building interactive, scalable digital solutions blending performance & creativity.
       </p>
-      <a id="download-cv"
-      href="https://drive.google.com/uc?export=download&id=1ETa1y0zzz3K9EpCalvTzxZOKcdeuY0Zz"
-      class="inline-block px-6 py-3 bg-blue-700 hover:bg-cyan-400 text-white font-semibold rounded-lg shadow-lg hover:shadow-cyan-400 transition transform hover:-translate-y-1">
-      📥 Download CV
-   </a>
-   
-
+      <div class="flex flex-col sm:flex-row gap-4 mt-6">
+        <a id="download-cv" href="https://drive.google.com/uc?export=download&id=1ETa1y0zzz3K9EpCalvTzxZOKcdeuY0Zz" class="inline-block px-6 py-3 bg-blue-700 hover:bg-cyan-400 text-white font-semibold rounded-lg shadow-lg hover:shadow-cyan-400 transition-all transform hover:-translate-y-1 text-center">
+          <i class="fas fa-download mr-2"></i> Download CV
+        </a>
+        <a href="#contact" class="inline-block px-6 py-3 bg-transparent border-2 border-cyan-400 hover:bg-cyan-400 text-cyan-400 hover:text-black font-semibold rounded-lg shadow-lg transition-all transform hover:-translate-y-1 text-center">
+          <i class="fas fa-envelope mr-2"></i> Contact Me
+        </a>
+      </div>
+      <div class="flex justify-center md:justify-start gap-4 mt-6">
+        <a href="https://linkedin.com/in/sanika-gaikwad-patil" class="text-cyan-400 hover:text-white text-2xl transition-all duration-300">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/sanikagaikwad" class="text-cyan-400 hover:text-white text-2xl transition-all duration-300">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com/sanikagaikwad" class="text-cyan-400 hover:text-white text-2xl transition-all duration-300">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
     </div>
     <div class="hero-image flex-1 flex justify-center z-10 animate-float mt-10 md:mt-0 px-4 sm:px-0">
-      <img src="assets/sanika.png" alt="Sanika Gaikwad Patil"
-           class="w-[250px] sm:w-[300px] md:w-[450px] h-[300px] sm:h-[350px] md:h-[500px] object-contain border-4 border-cyan-400 rounded-lg shadow-[0_0_40px_#00bfff] hover:scale-105 hover:drop-shadow-[0_0_15px_#00e5ff] transition-all duration-300">
+      <div class="relative">
+        <div class="absolute -inset-4 bg-cyan-400 rounded-lg blur-lg opacity-30"></div>
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Sanika Gaikwad Patil"
+             class="relative w-[250px] sm:w-[300px] md:w-[400px] h-[300px] sm:h-[350px] md:h-[450px] object-cover border-4 border-cyan-400 rounded-lg shadow-[0_0_40px_#00bfff] hover:scale-105 hover:drop-shadow-[0_0_15px_#00e5ff] transition-all duration-300">
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-gradient-to-r from-black to-cyan-900/20 border-y border-cyan-400">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="fade-in">
+          <div class="counter" data-count="25">0</div>
+          <p class="text-cyan-200">Projects Completed</p>
+        </div>
+        <div class="fade-in">
+          <div class="counter" data-count="15">0</div>
+          <p class="text-cyan-200">Happy Clients</p>
+        </div>
+        <div class="fade-in">
+          <div class="counter" data-count="3">0</div>
+          <p class="text-cyan-200">Years Experience</p>
+        </div>
+        <div class="fade-in">
+          <div class="counter" data-count="10">0</div>
+          <p class="text-cyan-200">Awards Won</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- About Section -->
   <section id="about" class="min-h-screen flex flex-col justify-center px-8 md:px-20 py-24 space-y-8">
-    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6">About Me</h2>
-    <p class="text-cyan-200 text-lg leading-relaxed">Passionate about building interactive, scalable digital solutions blending performance & creativity.</p>
-    <p class="text-cyan-200 text-lg leading-relaxed">Strong foundation in CS with hands-on experience in modern technologies. Goal: build applications that make a real difference.</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10">
-      <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-6 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center">MERN Stack</div>
-      <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-6 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center">Java</div>
-      <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-6 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center">Python</div>
-      <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-6 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center">Android</div>
+    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6 text-center fade-in">About Me</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div class="space-y-6 fade-in">
+        <p class="text-cyan-200 text-lg leading-relaxed">I'm a passionate and dedicated final year B.Tech Computer Science student with a strong foundation in computer science principles and hands-on experience in modern technologies.</p>
+        <p class="text-cyan-200 text-lg leading-relaxed">My goal is to build applications that make a real difference, combining technical excellence with creative problem-solving to deliver impactful digital solutions.</p>
+        <p class="text-cyan-200 text-lg leading-relaxed">When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or participating in hackathons to challenge myself and grow as a developer.</p>
+        <div class="mt-8">
+          <h3 class="text-cyan-400 text-xl font-semibold mb-4">Education</h3>
+          <div class="space-y-4">
+            <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-4 border border-cyan-400 rounded-lg">
+              <h4 class="text-cyan-400 font-semibold">Bachelor of Technology in Computer Science</h4>
+              <p class="text-cyan-200">XYZ University (2020-2024)</p>
+              <p class="text-cyan-200">CGPA: 9.2/10</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in">
+        <h3 class="text-cyan-400 text-xl font-semibold mb-6">Technologies I Work With</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-4 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center flex flex-col items-center justify-center">
+            <i class="fab fa-react text-4xl text-cyan-400 mb-2"></i>
+            <span>MERN Stack</span>
+          </div>
+          <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-4 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center flex flex-col items-center justify-center">
+            <i class="fab fa-java text-4xl text-cyan-400 mb-2"></i>
+            <span>Java</span>
+          </div>
+          <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-4 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center flex flex-col items-center justify-center">
+            <i class="fab fa-python text-4xl text-cyan-400 mb-2"></i>
+            <span>Python</span>
+          </div>
+          <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-4 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center flex flex-col items-center justify-center">
+            <i class="fab fa-android text-4xl text-cyan-400 mb-2"></i>
+            <span>Android</span>
+          </div>
+          <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-4 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center flex flex-col items-center justify-center">
+            <i class="fas fa-database text-4xl text-cyan-400 mb-2"></i>
+            <span>MySQL</span>
+          </div>
+          <div class="bg-gradient-to-tr from-black/50 to-cyan-900/50 p-4 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform text-center flex flex-col items-center justify-center">
+            <i class="fab fa-git-alt text-4xl text-cyan-400 mb-2"></i>
+            <span>Git</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="min-h-screen flex flex-col justify-center px-8 md:px-20 py-24 space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6 text-center fade-in">Technical Skills</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="fade-in">
+        <h3 class="text-cyan-400 text-xl font-semibold mb-4">Frontend Development</h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between">
+              <span class="text-cyan-200">React.js</span>
+              <span class="text-cyan-400">90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 90%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between">
+              <span class="text-cyan-200">JavaScript</span>
+              <span class="text-cyan-400">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between">
+              <span class="text-cyan-200">HTML/CSS</span>
+              <span class="text-cyan-400">95%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 95%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between">
+              <span class="text-cyan-200">Tailwind CSS</span>
+              <span class="text-cyan-400">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 80%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in">
+        <h3 class="text-cyan-400 text-xl font-semibold mb-4">Backend Development</h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between">
+              <span class="text-cyan-200">Node.js</span>
+              <span class="text-cyan-400">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between">
+              <span class="text-cyan-200">Express.js</span>
+              <span class="text-cyan-400">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 80%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between">
+              <span class="text-cyan-200">MongoDB</span>
+              <span class="text-cyan-400">75%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 75%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between">
+              <span class="text-cyan-200">Python</span>
+              <span class="text-cyan-400">70%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="min-h-screen flex flex-col justify-center px-8 md:px-20 py-24 space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6 text-center fade-in">Experience & Timeline</h2>
+    <div class="timeline fade-in">
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <h3 class="text-cyan-400 font-semibold">Full Stack Developer Intern</h3>
+          <p class="text-cyan-200">Tech Solutions Inc.</p>
+          <p class="text-cyan-200 text-sm">Jan 2023 - Jun 2023</p>
+          <p class="text-cyan-200 mt-2">Developed and maintained web applications using MERN stack. Collaborated with cross-functional teams to deliver high-quality software solutions.</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="timeline-content">
+          <h3 class="text-cyan-400 font-semibold">Android Developer</h3>
+          <p class="text-cyan-200">Mobile Innovations</p>
+          <p class="text-cyan-200 text-sm">Jun 2022 - Dec 2022</p>
+          <p class="text-cyan-200 mt-2">Created responsive mobile applications with Java and Kotlin. Implemented modern UI/UX designs and integrated RESTful APIs.</p>
+        </div>
+      </div>
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <h3 class="text-cyan-400 font-semibold">Web Developer</h3>
+          <p class="text-cyan-200">Digital Creations</p>
+          <p class="text-cyan-200 text-sm">Mar 2021 - May 2022</p>
+          <p class="text-cyan-200 mt-2">Built responsive websites using HTML, CSS, JavaScript and React. Optimized websites for performance and SEO.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Projects Section -->
   <section id="projects" class="min-h-screen flex flex-col justify-center px-8 md:px-20 py-24 space-y-8">
-    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6">Projects</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6 text-center fade-in">Projects</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="bg-gradient-to-tr from-black/50 to-cyan-900/40 p-6 border border-cyan-400 rounded-lg shadow-lg hover:scale-105 transition transform cursor-pointer">
+      <div class="project-card bg-gradient-to-tr from-black/50 to-cyan-900/40 p-6 border border-cyan-400 rounded-lg shadow-lg">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="EcoCart" class="w-full h-48 object-cover rounded-lg mb-4">
+          <div class="project-overlay">
+            <a href="#" class="px-4 py-2 bg-cyan-400 text-black font-semibold rounded-lg mb-2">View Details</a>
+            <a href="#" class="px-4 py-2 bg-transparent border border-cyan-400 text-cyan-400 font-semibold rounded-lg">Live Demo</a>
+          </div>
+        </div>
         <h3 class="text-cyan-400 font-bold text-xl mb-3">EcoCart</h3>
-        <p class="text-cyan-200 mb-4">Sustainable shopping assistant that rates products on eco-friendliness.</p>
+        <p class="text-cyan-200 mb-4">Sustainable shopping assistant that rates products on eco-friendliness using AI algorithms to analyze product ingredients and manufacturing processes.</p>
         <div class="flex flex-wrap gap-2">
           <span class="bg-cyan-400/20 border border-cyan-400 text-cyan-400 px-3 py-1 rounded-full text-sm">React</span>
           <span class="bg-cyan-400/20 border border-cyan-400 text-cyan-400 px-3 py-1 rounded-full text-sm">Node.js</span>
           <span class="bg-cyan-400/20 border border-cyan-400 text-cyan-400 px-3 py-1 rounded-full text-sm">MongoDB</span>
+          <span class="bg-cyan-400/20 border border-cyan-400 text-cyan-400 px-3 py-1 rounded-full text-sm">AI/ML</span>
         </div>
       </div>
-      <!-- Add more projects similarly -->
+      
+      <!-- Additional project cards would go here -->
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-16 bg-gradient-to-r from-black to-cyan-900/20 border-y border-cyan-400">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-12 text-center fade-in">What People Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="testimonial-card fade-in">
+          <div class="flex items-center mb-4">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Client" class="w-12 h-12 rounded-full mr-4">
+            <div>
+              <h4 class="text-cyan-400 font-semibold">Sarah Johnson</h4>
+              <p class="text-cyan-200 text-sm">Project Manager</p>
+            </div>
+          </div>
+          <p class="text-cyan-200">"Sanika delivered exceptional work on our web application. Her attention to detail and problem-solving skills are remarkable."</p>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="flex items-center mb-4">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Client" class="w-12 h-12 rounded-full mr-4">
+            <div>
+              <h4 class="text-cyan-400 font-semibold">Michael Chen</h4>
+              <p class="text-cyan-200 text-sm">CTO, Tech Solutions</p>
+            </div>
+          </div>
+          <p class="text-cyan-200">"Working with Sanika was a great experience. She quickly understood our requirements and delivered beyond expectations."</p>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="flex items-center mb-4">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Client" class="w-12 h-12 rounded-full mr-4">
+            <div>
+              <h4 class="text-cyan-400 font-semibold">Emily Rodriguez</h4>
+              <p class="text-cyan-200 text-sm">Product Owner</p>
+            </div>
+          </div>
+          <p class="text-cyan-200">"Sanika's technical expertise and creative approach helped us build a product that our users love. Highly recommended!"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-12 text-center fade-in">Latest Blogs</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="blog-card fade-in">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Blog" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-cyan-400 font-bold text-xl mb-3">Building Scalable React Applications</h3>
+            <p class="text-cyan-200 mb-4">Learn how to structure your React applications for scalability and maintainability.</p>
+            <a href="#" class="text-cyan-400 hover:text-white transition-all duration-300">Read More →</a>
+          </div>
+        </div>
+        <div class="blog-card fade-in">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Blog" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-cyan-400 font-bold text-xl mb-3">The Future of Web Development</h3>
+            <p class="text-cyan-200 mb-4">Exploring emerging trends and technologies that will shape the future of web development.</p>
+            <a href="#" class="text-cyan-400 hover:text-white transition-all duration-300">Read More →</a>
+          </div>
+        </div>
+        <div class="blog-card fade-in">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Blog" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-cyan-400 font-bold text-xl mb-3">Optimizing Mobile App Performance</h3>
+            <p class="text-cyan-200 mb-4">Best practices for improving performance and user experience in mobile applications.</p>
+            <a href="#" class="text-cyan-400 hover:text-white transition-all duration-300">Read More →</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Achievements Section -->
   <section id="achievements" class="min-h-screen flex flex-col justify-center px-8 md:px-20 py-24 space-y-8">
-    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6">Achievements</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6 text-center fade-in">Achievements & Certifications</h2>
     <div class="space-y-6">
-      <div class="flex flex-col md:flex-row items-center gap-6 p-6 bg-gradient-to-tr from-black/50 to-cyan-900/40 border border-cyan-400 rounded-lg shadow-lg hover:scale-102 transition transform">
-        <div class="w-16 h-16 flex items-center justify-center border-2 border-cyan-400 rounded-full text-2xl text-cyan-400 bg-cyan-400/10">🏆</div>
-        <div>
-          <h3 class="text-cyan-400 font-semibold text-lg">Top 5 finalist in National Hackathon 2024</h3>
-          <p class="text-cyan-200">Competed among hundreds of teams nationwide</p>
-        </div>
-      </div>
-      <!-- Add more achievements -->
+      <!-- Achievement cards would go here -->
     </div>
   </section>
 
   <!-- Contact Section -->
   <section id="contact" class="min-h-screen flex flex-col justify-center px-8 md:px-20 py-24 space-y-8">
-    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6">Get In Touch</h2>
-    <div class="flex flex-col md:flex-row gap-6 mt-10">
-      <a href="mailto:aniketgosavi2021@gmail.com" class="flex-1 flex items-center gap-4 p-6 bg-gradient-to-tr from-black/50 to-cyan-900/40 border border-cyan-400 rounded-lg shadow-lg hover:scale-102 transition transform text-white">
-        <div class="w-12 h-12 flex items-center justify-center border-2 border-cyan-400 rounded-full text-xl bg-cyan-400/10">✉️</div>
-        <div>
-          <div class="text-gray-400 text-sm">Email</div>
-          <div class="text-cyan-400 font-semibold">sanikagaikwad189@gmail.com</div>
-        </div>
-      </a>
+    <h2 class="text-3xl md:text-4xl font-bold text-cyan-400 mb-6 text-center fade-in">Get In Touch</h2>
+    <p class="text-cyan-200 text-lg text-center max-w-2xl mx-auto">I'm always open to discussing new opportunities, creative projects, or just having a chat about technology. Feel free to reach out!</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+      <div class="space-y-6 fade-in">
+        <!-- Contact information would go here -->
+      </div>
+      
+      <div class="fade-in">
+        <!-- Contact form would go here -->
+      </div>
     </div>
   </section>
 
+  <!-- Footer -->
+  <footer class="py-8 border-t border-cyan-400/30 text-center">
+    <p class="text-cyan-200">© 2024 Sanika Gaikwad Patil. All Rights Reserved.</p>
+    <p class="text-cyan-400/70 mt-2">Designed & Developed with ❤️ by Sanika</p>
+  </footer>
+
   <!-- Desktop Navbar -->
   <nav id="navbar" class="fixed bottom-0 left-0 w-full flex justify-around bg-black/95 border-t-2 border-cyan-400 backdrop-blur-md py-5 z-50 hidden md:flex">
-    <a href="#home" class="uppercase font-semibold text-cyan-400 hover:text-white transition">Home</a>
-    <a href="#about" class="uppercase font-semibold text-cyan-400 hover:text-white transition">About</a>
-    <a href="#projects" class="uppercase font-semibold text-cyan-400 hover:text-white transition">Projects</a>
-    <a href="#achievements" class="uppercase font-semibold text-cyan-400 hover:text-white transition">Achievements</a>
-    <a href="#contact" class="uppercase font-semibold text-cyan-400 hover:text-white transition">Contact</a>
+    <a href="#home" class="uppercase font-semibold text-cyan-400 hover:text-white transition-all duration-300">Home</a>
+    <a href="#about" class="uppercase font-semibold text-cyan-400 hover:text-white transition-all duration-300">About</a>
+    <a href="#skills" class="uppercase font-semibold text-cyan-400 hover:text-white transition-all duration-300">Skills</a>
+    <a href="#projects" class="uppercase font-semibold text-cyan-400 hover:text-white transition-all duration-300">Projects</a>
+    <a href="#achievements" class="uppercase font-semibold text-cyan-400 hover:text-white transition-all duration-300">Achievements</a>
+    <a href="#contact" class="uppercase font-semibold text-cyan-400 hover:text-white transition-all duration-300">Contact</a>
   </nav>
 
-  <script src="src/script.js"></script>
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const topNavbar = document.getElementById('top-navbar');
+    
+    hamburger.addEventListener('click', () => {
+      topNavbar.style.left = topNavbar.style.left === '0px' ? '-100%' : '0px';
+      
+      // Animate hamburger to X
+      const spans = hamburger.querySelectorAll('span');
+      if (topNavbar.style.left === '0px') {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+    
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('#top-navbar a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        topNavbar.style.left = '-100%';
+        const spans = hamburger.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      });
+    });
+    
+    // Fade in animation on scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInOnScroll = () => {
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('visible');
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', fadeInOnScroll);
+    
+    // Initialize fade in on page load
+    window.addEventListener('load', fadeInOnScroll);
+    
+    // Animate skill bars when they come into view
+    const skillBars = document.querySelectorAll('.skill-progress');
+    
+    const animateSkillBars = () => {
+      skillBars.forEach(bar => {
+        const barTop = bar.getBoundingClientRect().top;
+        
+        if (barTop < window.innerHeight - 100) {
+          bar.style.width = bar.style.width;
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', animateSkillBars);
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Create floating shapes
+    const floatingShapes = document.getElementById('floating-shapes');
+    for (let i = 0; i < 15; i++) {
+      const shape = document.createElement('div');
+      shape.classList.add('shape');
+      shape.style.width = Math.random() * 100 + 50 + 'px';
+      shape.style.height = Math.random() * 100 + 50 + 'px';
+      shape.style.left = Math.random() * 100 + 'vw';
+      shape.style.top = Math.random() * 100 + 'vh';
+      shape.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+      shape.style.animation = `float ${Math.random() * 10 + 10}s ease-in-out infinite`;
+      shape.style.animationDelay = Math.random() * 5 + 's';
+      floatingShapes.appendChild(shape);
+    }
+    
+    // Create particles
+    const particlesContainer = document.getElementById('particles-container');
+    for (let i = 0; i < 50; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.width = Math.random() * 5 + 2 + 'px';
+      particle.style.height = particle.style.width;
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.top = Math.random() * 100 + 'vh';
+      particle.style.animation = `float ${Math.random() * 10 + 5}s ease-in-out infinite`;
+      particle.style.animationDelay = Math.random() * 5 + 's';
+      particlesContainer.appendChild(particle);
+    }
+    
+    // Custom cursor
+    const cursorFollower = document.getElementById('cursor-follower');
+    document.addEventListener('mousemove', (e) => {
+      cursorFollower.style.left = e.clientX + 'px';
+      cursorFollower.style.top = e.clientY + 'px';
+    });
+    
+    // Animated counters
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200;
+    
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-count');
+        const count = +counter.innerText;
+        const increment = target / speed;
+        
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(animateCounters, 1);
+        } else {
+          counter.innerText = target;
+        }
+      });
+    };
+    
+    // Start counters when they come into view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => {
+      observer.observe(counter);
+    });
+  </script>
 </body>
 </html>
